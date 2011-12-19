@@ -31,6 +31,7 @@
 			<li <?php if( $title == Lang::line( 'admin.post-type-pages' ) ) { echo 'class="active"'; }?>><a href="<?php echo URL::to( '/admin/pages' ) ; ?>"><?php echo Lang::line( 'admin.post-type-pages' ); ?></a></li>
 			<li <?php if( $title == Lang::line( 'admin.settings' ) ) { echo 'class="active"'; }?>><a href="<?php echo URL::to( '/admin/settings' ) ; ?>"><?php echo Lang::line( 'admin.settings' ); ?></a></li>
 			<li <?php if( $title == Lang::line( 'admin.templates' ) ) { echo 'class="active"'; }?>><a href="<?php echo URL::to( '/admin/templates' ) ; ?>"><?php echo Lang::line( 'admin.templates' ); ?></a></li>
+			<li><a href="https://github.com/pererinha/BunnyCMS" target="_blank"><?php echo Lang::line( 'admin.about-git' ); ?></a></li>
 			<li><a href="<?php echo URL::to( '/admin/logout' ) ; ?>"><?php echo Lang::line( 'admin.login-logout' ); ?></a></li>
           </ul>
         </div>
@@ -57,9 +58,12 @@
 		<?php } ?>
 		<?php echo $content;?>
       </div>
-
       <footer>
-        <p>BunnyCMS</p>
+			<pre>
+				 (\/)
+				( . .)
+				c(")(") <a href="https://github.com/pererinha/BunnyCMS" target="_blank">BunnyCMS</a>
+			</pre>
       </footer>
     </div> <!-- /container -->
   </body>

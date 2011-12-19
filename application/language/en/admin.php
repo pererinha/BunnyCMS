@@ -26,7 +26,9 @@ return array(
 	'category-add' => 'Add Category',
 	'category-note' => 'Note:',
 	'category-to-remove' => 'Let the field empty to remove!',
+	
 	'home-public' => 'Public',
+	'about-git' => 'About on GitHub',
 	'btn-new' => 'New Post/Page',
 	'btn-delete' => 'Delete it',
 	'btn-save' => 'Save changes',
