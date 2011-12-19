@@ -1,38 +1,39 @@
 BunnyCMS
 =============
+I developed the BunnyCMS because I needed a simple and flexible tool in order to get my blog updated.  
 
-Eu criei o BunnyCMS porque vi a necessidade de uma ferramenta simples para meu blog.
-
-Instalação
+Installation
 ----------
 
-A instalação do BunnyCMS é simples. ( Está no meu TODO list criar um instalador ).
+The installation is very easy. All you have to do is:
 
-1. Edite o arquivo \application\config\production\application.php (linha 3)
-	'url' => 'url para o bunnycms',
+1. Edit the file \application\config\production\application.php (line 3)
+	'url' => 'bunnycms's url'
 
-2. Edite o arquivo \application\config\production\database.php. Coloque os dados do banco de dados.
+2. Edit the file \application\config\production\database.php with your database info.
 
-3. Execute o arquivo bunny.sql no seu banco da dados.
+3. Run the file bunny.sql in your database.
 
-4. Para acessar a área administrativa acesse a url /admin. O login é 'admin' e a senha inicial é 'admin' também.
+4. The enter at the administration area access http://BUNNY_URL/admin. The login is 'admin' and the password is also 'admin'. You can change it later.
 
+Who is using it
+-------------
+Up until now... just me [danielcamargo.com](http://www.danielcamargo.com) :) 
 
-Obrigado para:
+Thanks to:
 --------
-* [Laravel](http://laravel.com/) Mais uma vez utilizei o Laravel para em um projeto.
-* [Mustache.php](https://github.com/bobthecow/mustache.php) Utilizei o Mustache.php para templates.
-* [NicEdit](http://nicedit.com/) Editor WYSIWYG.
-* [Bootstrap, from Twitter] (http://twitter.github.com/bootstrap/) Utilizado na área administrativa
+* [Laravel](http://laravel.com/) 
+* [Mustache.php](https://github.com/bobthecow/mustache.php) 
+* [NicEdit](http://nicedit.com/)
+* [Bootstrap, from Twitter] (http://twitter.github.com/bootstrap/) 
 
 
-TODO
+TODO List
 ------------
-
-1. Instalador.
+1. Auto install.
 2. RSS.
-3. Documentação
+3. Documentation
 
-[r2h]: http://github.com/github/markup/tree/master/lib/github/commands/rest2html
-[r2hc]: http://github.com/github/markup/tree/master/lib/github/markups.rb#L13
-[1]: http://github.com/github/markup/issues
+Suggestions?
+-----------
+Any ideas? Please contact me. 
