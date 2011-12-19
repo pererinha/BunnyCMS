@@ -16,9 +16,11 @@ The installation is very easy. All you have to do is:
 
 2. Edit the file \application\config\production\database.php with your database info.
 
-3. Run the file bunny.sql in your database.
+3. Edit the permission of the folder /images.
 
-4. The enter at the administration area access http://BUNNY_URL/admin. The login is 'admin' and the password is also 'admin'. You can change it later.
+4. Run the file bunny.sql in your database.
+
+5. The enter at the administration area access http://BUNNY_URL/admin. The login is 'admin' and the password is also 'admin'. You can change it later.
 
 Who is using it
 -------------
