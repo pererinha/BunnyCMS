@@ -1,4 +1,3 @@
-{{%UNESCAPED}} <!-- Please do not remove this line -->
 <div id="twitter">
 	<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{url}}" data-text="{{name}}" data-count="horizontal" data-via="pererinha">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 </div>

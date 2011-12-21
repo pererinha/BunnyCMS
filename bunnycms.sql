@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 18, 2011 at 07:36 PM
+-- Generation Time: Dec 20, 2011 at 10:37 PM
 -- Server version: 5.5.17
 -- PHP Version: 5.3.6
 
@@ -101,6 +101,13 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `last_activity`, `data`) VALUES
+('8oWNp24AelZFLRIjkXg0ZhsXtaEdpQVgGwR9i0vH', 1324427855, 'a:4:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"AfO98uFG7p85wLHdkfv2Q530XWaCZaQ157pvQx4h";s:6:"logged";b:1;}');
+
 -- --------------------------------------------------------
 
 --
@@ -114,7 +121,6 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `tagline` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `footer` text COLLATE utf8_unicode_ci NOT NULL,
   `dateformat` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `slugallposts` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
@@ -125,8 +131,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `author`, `password`, `title`, `tagline`, `description`, `footer`, `dateformat`, `slugallposts`) VALUES
-('BunnyCMS', 'Little Cute Bunny', '1b319c1cf17a571a1771e94dbc9a587aa028ad48', 'Hi there,', 'Welcome to my blog', 'This blog was made by BunnyCMS.', '<p>This blog was made by <a href=\\"https://github.com/pererinha/BunnyCMS\\" title=\\"\\" target=\\"\\">BunnyCMS</a>.</p>', 'd/m/Y', 'listartudo');
+INSERT INTO `settings` (`id`, `author`, `password`, `title`, `tagline`, `description`, `dateformat`, `slugallposts`) VALUES
+('BunnyCMS', 'Little Cute Bunny', '1b319c1cf17a571a1771e94dbc9a587aa028ad48', 'Hi there,', 'Welcome to my blog', 'This blog was made by BunnyCMS.', 'd/m/Y', 'allposts');
 
 -- --------------------------------------------------------
 
@@ -169,11 +175,11 @@ CREATE TABLE IF NOT EXISTS `template` (
 --
 
 INSERT INTO `template` (`id`, `content`, `description`) VALUES
-('base', '{{%UNESCAPED}} <!-- Please do not remove this line -->\n<!DOCTYPE html>\n<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<title>{{settings.title}} {{#subtitle}} - {{subtitle}} {{/subtitle}}</title>\n{{linkcss}}\n<link href=''http://fonts.googleapis.com/css?family=Convergence'' rel=''stylesheet'' type=''text/css''>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, minimum-scale=0.6, maximum-scale=1.0" />\n<meta name="description" content="{{settings.description}}">\n</head>\n<body>\n<header>\n<h1>{{settings.title}}</h1>\n<p id="tagline">{{settings.tagline}}</p>\n</header>\n	<nav>\n		<ul>\n			<li><a href="{{urlhome}}">Home</a></li>\n			<li><a href="{{urlallposts}}">All Posts</a></li>\n			{{#pages}}\n			    <li><a href="{{url}}" title="{{name}}">{{name}}</a></li>\n			{{/pages}}\n		</ul>\n	<div class="clear"></div>\n	</nav>\n	<section id="contents">\n		{{content}}\n	</section>\n	<footer>\n		{{settings.footer}}\n	</footer>\n</body>\n</html>', 'Template base'),
+('base', '<!DOCTYPE html>\n<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">\n<head>\n<title>{{title}} {{#subtitle}} - {{subtitle}} {{/subtitle}}</title>\n{{linkcss}}\n<link href="http://fonts.googleapis.com/css?family=Convergence" rel="stylesheet" type="text/css">\n<link href="{{urlfeed}}" rel="alternate" title="Atom feed" type="application/atom+xml">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, minimum-scale=0.6, maximum-scale=1.0" />\n<meta name="description" content="{{description}}">\n</head>\n<body>\n<header>\n<h1>{{title}}</h1>\n<p id="tagline">{{tagline}}</p>\n</header>\n	<nav>\n		<ul>\n			<li><a href="{{urlhome}}">Home</a></li>\n			<li><a href="{{urlallposts}}">All Posts</a></li>\n			{{#pages}}\n			    <li><a href="{{url}}" title="{{name}}">{{name}}</a></li>\n			{{/pages}}\n		</ul>\n	<div class="clear"></div>\n	</nav>\n	<section id="contents">\n		{{content}}\n	</section>\n	<footer>\n		<pre>\n		 (\\\\/)\n		( . .)\n		c(")(") <a href="https://github.com/pererinha/BunnyCMS" target="_blank">BunnyCMS</a> | <a href="{{urlfeed\n		}}" target="_blank">Feed</a> \n		</pre>\n	</footer>\n</body>\n</html>', 'Template base'),
 ('css', 'html * {margin:0;padding:0;}\nbody{\n	color:#666;\n	background:#F5F5F5;\n	font-family:Georgia, Helvetica, Arial, sans-serif;\n}\na{\n	color:#256FCF;\n	text-decoration:none;\n}\n	a:hover{\n		background:#256FCF;\n		color:#FFF;\n		text-shadow:none;\n	}\nh1, h2, h3{font-family: ''Convergence'', sans-serif;}\nsection, header, footer, nav{\n	width:800px;\n	margin:0 auto;\n}\n\nheader{\n	margin:20px auto;\n}\n	header h1{\n		color:#666;\n		font-size:50px;\n		line-height:75px;\n		text-shadow: 0px 2px 3px #F5F5F5;\n	}\n	header p{\n\n	}\nnav{\n	border:1px solid #CCC;\n	border-left:none;\n	border-right:none;\n	padding:5px 0;\n}\n	nav ul{\n		list-style:none;\n	}\n		nav ul li{\n			float:left;\n		}\n			nav ul li a{\n				margin:5px;\n			}\n\nsection{}\n	section h2{\n		font-size:35px;\n		margin:30px 0 10px 0;\n		text-shadow: 0px 2px 3px #F5F5F5;\n	}\n.overview *{\n	font-size:12px;\n}\n	.overview p{\n		color:#999;\n		float:left;\n		margin:0 0 10px 0;\n	}\n	.overview ul{\n		list-style:none;\n	}\n		.overview ul li{\n			float: left;\n			padding:0 5px 0 5px;\n		}\narticle.contents{}\n	article.contents h3{\n		border-bottom:1px solid #CCC;\n		color:#999;\n		font-size:28px;\n		margin:40px 0 20px 0;\n		text-shadow: 0px 2px 3px #F5F5F5;\n	}\n	article.contents p{\n		line-height:26px;\n	}\n		article.contents p{\n			margin:0 0 15px 0;\n		}\n	article.contents ul, article.contents ol{\n		line-height:26px;\n		margin:15px 0 15px 25px;\n	}\n	article.contents pre{\n		background:#000;\n		color:#FFF;\n		margin:10px 0;\n		padding:5px;\n	}\n#twitter{\n	width:100px;\n	float:right;\n}\n#facebook-like{\n	margin:30px 0 0 0;\n}\n#pagination{\n	margin:40px 0 0 0;\n	text-align:center;\n}\nul#posts{\n	list-style:none;\n}\n	ul#posts li h3{\n		font-size:23px;\n		margin:20px 0 10px 0;\n	}\nfooter{\n	border-top:1px solid #CCC;\n	color:#999;\n	font-size:14px;\n	margin-bottom:30px;\n	margin-top:60px;\n	padding:15px 0 0 0;\n}\n.clear{clear:both;}', 'Styles CSS'),
 ('error404', '<h2>Server Error: 404 (Not Found)</h2>\n<h3>What does this mean?</h3>\n<p>\nWe couldn''t find the page you requested on our servers. We''re really sorry\nabout that. It''s our fault, not yours. We''ll work hard to get this page\nback online as soon as possible.\n</p>', 'Template Erro 404'),
-('post', '{{%UNESCAPED}} <!-- Please do not remove this line -->\n<div id="twitter">\n	<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{url}}" data-text="{{name}}" data-count="horizontal" data-via="pererinha">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>\n</div>\n<h2><a href="{{url}}">{{name}}</a></h2>\n<article class="overview">\n	<p class=''details''>\n		Posted on\n		<time datetime="{{dateformated}}" title="{{dateformated}}">\n			{{timeago}}\n		</time>\n		under \n		<ul class="categories">\n		{{#categories}}\n		    <li><strong><a href="{{url}}">{{name}}</a></strong></li>\n		{{/categories}}\n		</ul>\n	</p>\n	<div class="clear"></div>\n</article> \n<article class="contents">\n	{{content}}\n</article>\n<p id="facebook-like">\n	<iframe src="http://www.facebook.com/plugins/like.php?href={{url}}" scrolling="no" frameborder="0" style="border:none; width:450px; height:80px"></iframe>\n</p>\n<div class="fb-comments" data-href="{{url}}" data-num-posts="5" data-width="500"></div>\n<div id="fb-root"></div>\n<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=282603045097604"; fjs.parentNode.insertBefore(js, fjs);}(document, ''script'', ''facebook-jssdk''));</script>', 'Template for a post'),
-('posts', '{{%UNESCAPED}} <!-- Please do not remove this line -->\n{{#allposts}}\n	<h2><a href="{{allposts.url}}">All posts</a></h2>\n{{/allposts}}\n{{#category}}\n	<h2>Posts under category <a href="{{category.url}}">{{category.name}}</a></h2>\n{{/category}}\n<ul id=''posts''>\n{{#posts}}\n    <li>\n		<h3><a href="{{url}}">{{name}}</a></h3>\n		<article class=''overview''>\n			<p class=''details''>\n				Posted on\n				<time datetime="{{dateformated}}" title="{{dateformated}}">\n					{{timeago}}\n				</time>\n				under \n				<ul class="categories">\n					{{#categories}}\n			    		<li><strong><a href="{{url}}">{{name}}</a></strong></li>\n					{{/categories}}\n				</ul>\n			</p>\n			<div class="clear"></div>\n		</article>\n	</li>\n{{/posts}}\n</ul>\n<div id="pagination">\n{{pagination}}\n</div>', 'Template for posts list');
+('post', '<div id=\\"twitter\\">\r\n	<a href=\\"https://twitter.com/share\\" class=\\"twitter-share-button\\" data-url=\\"{{url}}\\" data-text=\\"{{name}}\\" data-count=\\"horizontal\\" data-via=\\"pererinha\\">Tweet</a><script type=\\"text/javascript\\" src=\\"//platform.twitter.com/widgets.js\\"></script>\r\n</div>\r\n<h2><a href=\\"{{url}}\\">{{name}}</a></h2>\r\n<article class=\\"overview\\">\r\n	<p class=\\''details\\''>\r\n		Posted on\r\n		<time datetime=\\"{{dateformated}}\\" title=\\"{{dateformated}}\\">\r\n			{{timeago}}\r\n		</time>\r\n		under \r\n		<ul class=\\"categories\\">\r\n		{{#categories}}\r\n		    <li><strong><a href=\\"{{url}}\\">{{name}}</a></strong></li>\r\n		{{/categories}}\r\n		</ul>\r\n	</p>\r\n	<div class=\\"clear\\"></div>\r\n</article> \r\n<article class=\\"contents\\">\r\n	{{content}}\r\n</article>\r\n<p id=\\"facebook-like\\">\r\n	<iframe src=\\"http://www.facebook.com/plugins/like.php?href={{url}}\\" scrolling=\\"no\\" frameborder=\\"0\\" style=\\"border:none; width:450px; height:80px\\"></iframe>\r\n</p>\r\n<div class=\\"fb-comments\\" data-href=\\"{{url}}\\" data-num-posts=\\"5\\" data-width=\\"500\\"></div>\r\n<div id=\\"fb-root\\"></div>\r\n<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = \\"//connect.facebook.net/en_US/all.js#xfbml=1&appId=282603045097604\\"; fjs.parentNode.insertBefore(js, fjs);}(document, \\''script\\'', \\''facebook-jssdk\\''));</script>', 'Template for a post'),
+('posts', '{{#allposts}}\n	<h2><a href="{{allposts.url}}">All posts</a></h2>\n{{/allposts}}\n{{#category}}\n	<h2>Posts under category <a href="{{category.url}}">{{category.name}}</a></h2>\n{{/category}}\n<ul id=''posts''>\n{{#posts}}\n    <li>\n		<h3><a href="{{url}}">{{name}}</a></h3>\n		<article class=''overview''>\n			<p class=''details''>\n				Posted on\n				<time datetime="{{dateformated}}" title="{{dateformated}}">\n					{{timeago}}\n				</time>\n				under \n				<ul class="categories">\n					{{#categories}}\n			    		<li><strong><a href="{{url}}">{{name}}</a></strong></li>\n					{{/categories}}\n				</ul>\n			</p>\n			<div class="clear"></div>\n		</article>\n	</li>\n{{/posts}}\n</ul>\n<div id="pagination">\n{{pagination}}\n</div>', 'Template for posts list');
 
 --
 -- Constraints for dumped tables

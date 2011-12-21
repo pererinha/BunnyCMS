@@ -37,13 +37,6 @@
 			<textarea class="xxlarge" name="description" id="description" rows="3"><?php echo stripcslashes( $settings->description ); ?></textarea>
 		</div>
 	</div><!-- /clearfix -->
-	<div class="clearfix">
-		<label for="name"><?php echo Lang::line( 'admin.settings-footer' ); ?></label>
-		<div class="input">
-			<textarea class="xxlarge" name="footer" id="footer" rows="3"><?php echo stripcslashes( $settings->footer ); ?></textarea>
-			<span class="help-block"><?php echo Lang::line( 'admin.settings-footer-tip' ); ?></span>
-		</div>
-	</div><!-- /clearfix -->
 </fieldset>
 <fieldset>
 	<legend><?php echo Lang::line( 'admin.settings-access' ); ?></legend>

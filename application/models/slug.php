@@ -4,6 +4,7 @@ class Slug extends Eloquent {
 	public static $table = 'slug';
 	public static $typePost = 1;
 	public static $typeCategory = 2;
+	public static $slugFeed = 'feed';
 
 	public function content(){
 		return $this->has_many( 'Post' );

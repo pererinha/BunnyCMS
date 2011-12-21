@@ -12,6 +12,8 @@ class Settings extends Eloquent {
 				$attr[ $key ] = stripslashes( $value );
 			}
 		}
+		$attr[ 'urlhome' ] = URL::to( '/' );
+		$attr[ 'urlfeed' ] = URL::to( '/' . Slug::$slugFeed );
 		return $attr;
 	}
 }

@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="span10">
 			<div class="clearfix">
-				<textarea rows="3" id="content" name="content" style="height:450px;" class="span9"><?php echo stripcslashes( $template->content ); ?></textarea>
+				<textarea rows="3" id="content" name="content" style="height:450px;" class="span9"><?php echo stripslashes( $template->content ); ?></textarea>
 			</div><!-- /clearfix -->
 		</div>
    		<div class="span4">
@@ -12,13 +12,14 @@
      		<h3><?php echo Lang::line( 'admin.template-variables' ); ?></h3>
 			<h5><?php echo Lang::line( 'admin.template-base' ); ?></h5>
 			<ul>
-				<li>{{settings.title}}</li>
-				<li>{{settings.description}}</li>
-				<li>{{settings.tagline}}</li>
-				<li>{{settings.footer}}</li>
+				<li>{{title}}</li>
+				<li>{{description}}</li>
+				<li>{{tagline}}</li>
+				<li>{{footer}}</li>
 				<li>{{subtitle}}</li>
 				<li>{{linkcss}}</li>
 				<li>{{urlhome}}</li>
+				<li>{{urlfeed}}</li>
 				<li>{{urlallposts}}</li>
 				<li>{{pages}}
 					<ul>

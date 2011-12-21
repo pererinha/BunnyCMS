@@ -1,10 +1,13 @@
 <?php 
 return array(
+
 	'post' => 'Post',
 	'edit' => 'Edit',
 	'editing' => 'Editing',
 	'listing' => 'Listing',
+	
 	'post-nothing' => 'Nothing here!',
+
 	'post-nothing-call-action' => 'May you want to create a new one :)',
 	'post-name' => 'Title',
 	'post-date' => 'Date',
@@ -45,8 +48,6 @@ return array(
 	'settings-password-tip' => 'Leave it blank if you don`t want to change it.',
 	'settings-access' => 'Administration area',
 	'settings-description' => 'Description',
-	'settings-footer' => 'Footer',
-	'settings-footer-tip' => 'You can use HTML tags here',
 	'settings-date-format' => 'Date Format',
 	'settings-slug-all-posts' => 'Slug to all posts',
 

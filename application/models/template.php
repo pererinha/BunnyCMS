@@ -7,13 +7,14 @@ class Template extends Eloquent {
 	public static $templateBase = 'base';
 	public static $templateCSS = 'css';
 	public static $templateError404 = 'error404';
+	public static $unescaped = "{{%UNESCAPED}}\n";
 
 	public static function getTemplateBase(){
-		return static::getTemplate( static::$templateBase );
+		return static::$unescaped . static::getTemplate( static::$templateBase );
 	}
 	
 	public static function getTemplatePost(){
-		return static::getTemplate( static::$templatePost );
+		return static::$unescaped . static::getTemplate( static::$templatePost );
 	}
 	
 	public static function getTemplatePosts(){
@@ -30,6 +31,6 @@ class Template extends Eloquent {
 	
 	public static function getTemplate( $id ){
 		$template = Template::where_id( $id )->first();
-		return $template->content;
+		return stripslashes( $template->content );
 	}
 }

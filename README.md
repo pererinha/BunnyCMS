@@ -37,8 +37,7 @@ Thanks to:
 TODO List
 ------------
 1. Auto install.
-2. RSS.
-3. Documentation
+2. Documentation.
 
 Suggestions?
 -----------

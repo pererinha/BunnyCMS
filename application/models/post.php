@@ -33,6 +33,8 @@ class Post extends Eloquent {
 			}
 		}
 		$attr[ 'dateformated' ] = $this->dateFormated();
+		$attr[ 'timestamp' ] = Date::mysqlToUnix( $this->date );
+		$attr[ 'rssdate' ] = date( 'D, d M Y H:i:s O' , $attr[ 'timestamp' ] );
 		$attr[ 'timeago' ] = Date::time_ago( Date::mysqlToUnix( $this->date ) )->get();
 		$attr[ 'url' ] = URL::to( $this->slug->slug );
 		if( $this->categories ){
@@ -49,8 +51,21 @@ class Post extends Eloquent {
 		return Post::where_status( static::$statusPublic )->where_type( static::$typePost )->order_by( 'date', 'desc' )->first();
 	}
 
+	public static function getLastUpdate(){
+		$post = Post::where_status( static::$statusPublic )->where_type( static::$typePost )->order_by( 'date', 'desc' )->first();
+		if( $post ){
+			$attr = $post->getAttributes();
+			return $attr[ 'rssdate' ];
+		}
+		return false;
+	}
+
 	public static function getAllPublishedPosts(){
 		return Post::where_status( Post::$statusPublic )->where_type( Post::$typePost )->order_by( 'date', 'desc' )->paginate();
+	}
+
+	public static function getAllPublishedPostsToFeed(){
+		return Post::where_status( Post::$statusPublic )->where_type( Post::$typePost )->order_by( 'date', 'desc' )->get();
 	}
 
 	public static function getTotalPublishedPosts(){

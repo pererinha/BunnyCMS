@@ -1,4 +1,3 @@
-{{%UNESCAPED}} <!-- Please do not remove this line -->
 {{#allposts}}
 	<h2><a href="{{allposts.url}}">All posts</a></h2>
 {{/allposts}}

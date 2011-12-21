@@ -142,6 +142,7 @@ class Admin{
 				return Response::make( View::make( 'error/404' ), 404 );
 			}
 		}
+		
 		$content = View::make( 'admin/template' )->with( 'template', $template );
 
 		$title = Lang::line( 'admin.templates' );
@@ -189,7 +190,6 @@ class Admin{
 			$settings->tagline = $posted[ 'tagline' ];
 			$settings->description = $posted[ 'description' ];
 			$settings->author = $posted[ 'author' ];
-			$settings->footer = $posted[ 'footer' ];
 			$settings->dateformat = $posted[ 'dateformat' ];
 			$settings->slugallposts = $posted[ 'slugallposts' ];
 			if( $posted[ 'password' ] != '' ){

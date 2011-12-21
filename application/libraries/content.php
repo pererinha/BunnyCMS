@@ -7,7 +7,7 @@ class Content{
 	public function __construct(){
 		$this->mustache = new Mustache;
 	}
-	
+
 	public function show( $_slug ){
 		if( $_slug == NULL ){
 			return $this->theLastOne();
@@ -18,6 +18,9 @@ class Content{
 			if( $_slug == $settings['slugallposts'] ){
 				return $this->showAllPosts();
 			}
+			if( $_slug == Slug::$slugFeed ){
+				return $this->feed();
+			}
 		} else {
 			if( Slug::$typePost == $slug->type ){
 				return $this->showPost( $slug );
@@ -27,6 +30,21 @@ class Content{
 			}	
 		}
 		return $this->error404();
+	}
+
+	private function feed(){
+		header('Content-type: text/xml');
+		$xml = '<?xml version="1.0" encoding="utf-8" ?>';
+		$posts = Post::getAllPublishedPostsToFeed();
+		$data = array();
+		foreach( $posts as $post ){
+			$data[ 'posts' ][] = $post->getAttributes();
+		}
+		$data[ 'lastUpdate' ] = Post::getLastUpdate();
+		$data[ 'settings' ] = Settings::getSettings();
+		$data[ 'urlhome' ] = URL::to( '/' );
+		$layout = View::make( 'default/rss' )->with( 'data', $data );
+		return $xml . $layout;
 	}
 
 	private function theLastOne(){
@@ -83,9 +101,8 @@ class Content{
 	}
 	
 	private function renderContent( $data ){
-		$data[ 'settings' ] = Settings::getSettings();
+		$data = array_merge( $data, Settings::getSettings() );
 		$data[ 'linkcss' ] = '<style>' . Template::getTemplateCSS() . '</style>';
-		$data[ 'urlhome' ] = URL::to( '/' );
 		$data[ 'urlallposts' ] = $data[ 'settings' ][ 'slugallposts' ];
 		$pages = Post::getAllPublishedPage(); 
 		foreach( $pages as $page ){
