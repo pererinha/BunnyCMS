@@ -10,7 +10,10 @@
   </div><!-- /clearfix -->
   <div class="clearfix">
       <textarea rows="3" id="content" name="content" style="height:400px;" class="xxlarge"><?php echo stripcslashes( $post->content ); ?></textarea>
-  </div><!-- /clearfix -->
+  	  <?php if( $usemarkdown ) { ?>	
+		<br /><a href="http://warpedvisions.org/projects/markdown-cheat-sheet/" target="_blank">Markdown cheat sheet</a>
+	<?php } ?>
+	</div><!-- /clearfix -->
   <div class="clearfix">
     <label for="type"><?php echo Lang::line( 'admin.post-type' ); ?></label>
     <div class="input">

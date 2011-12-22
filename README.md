@@ -12,6 +12,7 @@ Features
 * Highly customizable
 * Front-end templates based on [Mustache Logic-less templates] (http://mustache.github.com/)
 * You can choose between [WYSIWYG Editor](http://nicedit.com/) or [Markdown] (http://daringfireball.net/projects/markdown/) to edit your posts
+* If you choose Markdown you can highlight your code - I'm using geshi here :)
 * It is totally free
 
 Installation
@@ -36,10 +37,9 @@ Using Markdown
 
 To get your code highlighted you need to add # following by the language name as the first line of your code block:
 
-    '
-	#php
-    $foo = "bar";
-	'
+`#php
+<?php echo $hello; ?>
+`
 
 Who is using it
 -------------
