@@ -86,12 +86,6 @@ article.contents{}
 		line-height:26px;
 		margin:15px 0 15px 25px;
 	}
-	article.contents pre{
-		background:#000;
-		color:#FFF;
-		margin:10px 0;
-		padding:5px;
-	}
 #twitter{
 	width:100px;
 	float:right;
@@ -118,4 +112,149 @@ footer{
 	margin-top:60px;
 	padding:15px 0 0 0;
 }
+/* @override http://localhost/mark_story2/site/css/geshi.css */
+/**
+ * GeSHi CSS Inspired by 
+ * TextMate Theme Dawn
+ *
+ * Copyright 2008 Mark Story 
+ * 
+ * This work is licensed under the Creative Commons Attribution-Share Alike 2.5 Canada License. 
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/2.5/ca/ 
+ * or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+ *
+ * @copyright		Copyright 2008, Mark Story.
+ * @link			http://mark-story.com
+ * @license			http://creativecommons.org/licenses/by-sa/2.5/ca/
+ */
+
+/*
+* Global geshi styles
+**********************/
+article.contents pre {
+	padding: 5px;
+	background: #FFF;
+	margin:10px;
+}
+article.contents pre ol {
+	list-style: decimal;
+	list-style-position: outside;
+	padding: 0;
+	margin: 0;
+}
+article.contents pre ol li {
+	margin: 0 0 0 35px;
+	padding: 0;
+	color: #333;
+	clear: none;
+}
+pre ol li div {
+	color:#000;
+}
+
+/* Line highlights */
+.li1 {
+	background: #E4E8EF;
+}
+
+
+/* comments */
+.co1,
+.coMULTI {
+	color:#5A526E;	
+}
+/* methods */
+.me1{
+	color:#000;
+}
+.me0 {	
+
+}
+.me2 {	
+	color:#000;
+}
+
+/* brackets */
+.br0 {
+	color:#000;
+}
+
+/* strings */
+.st0 {
+	color:#0B6125;
+}
+
+/* keywords */
+.kw1 {
+	color: #794938;
+}
+.kw2 {
+	color:#A71D5D;
+	font-style: italic;		
+}
+
+.kw3 {
+	color:#693A17;
+}
+
+/* numbers */
+.nu0 {
+	color:#811F24;
+}
+
+/* vars */
+.re0 {
+	color:#434A97;
+}
+
+
+/* 
+* CSS selectors 
+*****************/
+/* classnames */
+
+[lang=css] .kw2,
+.css .kw2 {
+	color:#C24F24;
+}
+[lang=css] .kw1,
+.css .kw1 {
+	color:#691C97;
+}
+[lang=css] .re0,
+.css .re0 {
+	color: #C24F24;
+}
+.re1 {
+	color: #C24F24;
+}
+/* px values */
+[lang=css] .re3,
+.css .re3 {
+	color:#84252A;
+}
+
+/*
+* Python
+****************/
+[lang=python] ol li div,
+.python ol li div {
+	color: #000;
+}
+[lang=python] .kw2,
+.python .kw2 {
+	font-style: normal;
+}
+[lang=python] .kw1 {
+	color: #A91D5D;
+}
+/*
+* Javascript
+****************/
+[lang=javascript] .me1,
+.javascript .me1 {
+	color: #794938;
+}
+
+
 .clear{clear:both;}

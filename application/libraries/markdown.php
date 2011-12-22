@@ -60,22 +60,34 @@ define( 'MARKDOWNEXTRA_VERSION',  "1.2.3" ); # Wed 31 Dec 2008
 
 @define( 'MARKDOWN_PARSER_CLASS',  'MarkdownExtra_Parser' );
 
+function markdown_code_highlight( $text ) {
+    return preg_replace( '|<p><code>#([^\\n]+)(.*?)</code></p>|se', 'markdown_code_highlighter(\'$2\',\'$1\');', $text);
+}
+
+function markdown_code_highlighter( $code, $language ) {
+    $code = stripslashes( trim( htmlspecialchars_decode( $code, ENT_NOQUOTES ) ) );
+    $geshi = new GeSHi( $code, $language );
+	$geshi->set_header_type( GESHI_HEADER_NONE );
+	$geshi->enable_classes();
+    return '<pre class="lang-' . $language . '"><code>' . $geshi->parse_code() . '</code></pre>';
+}
+
 class Markdown{
 
-public static function parse($text) {
-  #
-  # Initialize the parser and return the result of its transform method.
-  #
-    # Setup static parser variable.
-    static $parser;
-    if (!isset($parser)) {
-      $parser_class = MARKDOWN_PARSER_CLASS;
-      $parser = new $parser_class;
-    }
-
-    # Transform text using parser.
-    return $parser->transform($text);
-  }
+	public static function parse($text) {
+	#
+	# Initialize the parser and return the result of its transform method.
+	#
+	# Setup static parser variable.
+	static $parser;
+	if (!isset($parser)) {
+		$parser_class = MARKDOWN_PARSER_CLASS;
+		$parser = new $parser_class;
+	}
+		$text = $parser->transform($text);
+		$text = markdown_code_highlight( $text );
+	return $text;
+	}
 }
 
 ### WordPress Plugin Interface ###

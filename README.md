@@ -30,6 +30,17 @@ The installation is very easy. All you have to do is:
 
 5. The enter at the administration area access http://BUNNY_URL/admin. The login is 'admin' and the password is also 'admin'. You can change it later.
 
+Using Markdown 
+---------------
+### Formatting your code
+
+To get your code highlighted you need to add # following by the language name as the first line of your code block:
+
+    '
+	#php
+    $foo = "bar";
+	'
+
 Who is using it
 -------------
 Up until now... just me [danielcamargo.com](http://www.danielcamargo.com) :) 
