@@ -38,7 +38,10 @@ Using Markdown
 To get your code highlighted you need to add # following by the language name as the first line of your code block:
 
 `#php
-<?php echo $hello; ?>
+
+<?php
+echo $hello;
+?>
 `
 
 Who is using it
@@ -52,6 +55,7 @@ Thanks to:
 * [NicEdit](http://nicedit.com/)
 * [Bootstrap, from Twitter] (http://twitter.github.com/bootstrap/) 
 * [Markdown] (http://daringfireball.net/projects/markdown/) 
+* [php-markdown](https://github.com/wolfie/php-markdown)
 
 
 TODO List
