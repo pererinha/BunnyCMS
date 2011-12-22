@@ -37,6 +37,17 @@
 			<textarea class="xxlarge" name="description" id="description" rows="3"><?php echo stripcslashes( $settings->description ); ?></textarea>
 		</div>
 	</div><!-- /clearfix -->
+	<div class="clearfix">
+		<div class="input">
+		<input type="checkbox" name="usemarkdown" id="usemarkdown" <?php if( $settings->usemarkdown ) { echo 'checked="checked"'; }?> value="1" />
+		<span><?php echo Lang::line( 'admin.settings-markdown' ); ?></span>
+		<a href="http://daringfireball.net/projects/markdown/" target="_blank"><?php echo Lang::line( 'admin.settings-markdown-about' ); ?></a>
+		<span class="help-block">
+			<?php echo Lang::line( 'admin.settings-markdown-tip' ); ?>
+		</span>	
+		</div>
+	</div><!-- /clearfix -->
+	
 </fieldset>
 <fieldset>
 	<legend><?php echo Lang::line( 'admin.settings-access' ); ?></legend>

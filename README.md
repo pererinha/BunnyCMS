@@ -6,6 +6,14 @@ BunnyCMS
 =============
 I developed the BunnyCMS because I needed a simple and flexible tool in order to get my blog updated.  
 
+Features
+--------------------
+* It is very simple and easy
+* Highly customizable
+* Front-end templates based on [Mustache Logic-less templates] (http://mustache.github.com/)
+* You can choose between [WYSIWYG Editor](http://nicedit.com/) or [Markdown] (http://daringfireball.net/projects/markdown/) to edit your posts
+* It is totally free
+
 Installation
 ----------
 
@@ -32,6 +40,7 @@ Thanks to:
 * [Mustache.php](https://github.com/bobthecow/mustache.php) 
 * [NicEdit](http://nicedit.com/)
 * [Bootstrap, from Twitter] (http://twitter.github.com/bootstrap/) 
+* [Markdown] (http://daringfireball.net/projects/markdown/) 
 
 
 TODO List

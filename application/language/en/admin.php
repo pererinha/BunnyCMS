@@ -50,8 +50,11 @@ return array(
 	'settings-description' => 'Description',
 	'settings-date-format' => 'Date Format',
 	'settings-slug-all-posts' => 'Slug to all posts',
+	'settings-markdown' => 'Use markdown',
+	'settings-markdown-about' => '(About markdown project)',
+	'settings-markdown-tip' => 'If you check this option you will not see the WYSWYG Editor',
 
-	'templates' => 'Templates',
+	'templates' => 'Appearance',
 	'template' => 'Template',
 	'template-name' => 'Name',
 	'template-editing' => 'Editing :template',

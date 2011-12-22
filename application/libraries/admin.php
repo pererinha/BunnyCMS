@@ -12,11 +12,15 @@ class Admin{
 			$post = new Post();
 			$post->id = 0;
 		}
-		$content = View::make( 'admin/post' )->with( 'post', $post );
-
-		Asset::add('jquery', 'js/admin/jquery1.5.js');
-		Asset::add('nicEdit', 'js/admin/nicEdit.js');
-
+		$settings = Settings::getSettings();
+		
+		if( !$settings[ 'usemarkdown' ] ){
+			Asset::add('jquery', 'js/admin/jquery1.5.js');
+			Asset::add('nicEdit', 'js/admin/nicEdit.js');
+		}
+		
+		$content = View::make( 'admin/post' )->with( 'post', $post )->with( 'usemarkdown', $settings[ 'usemarkdown' ] );
+		
 		$title = ( $post->id === 0 ) ? Lang::line( 'admin.btn-new' ) : $post->name;
 		$tagline = ( $post->id === 0 ) ? '' : Lang::line( 'admin.editing' );
 		$layout = View::make( 'admin/base' )
@@ -192,6 +196,7 @@ class Admin{
 			$settings->author = $posted[ 'author' ];
 			$settings->dateformat = $posted[ 'dateformat' ];
 			$settings->slugallposts = $posted[ 'slugallposts' ];
+			$settings->usemarkdown = $posted[ 'usemarkdown' ];
 			if( $posted[ 'password' ] != '' ){
 				$password = sha1( Settings::$appName . $posted[ 'password' ] );
 				$settings->password = $password;

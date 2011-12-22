@@ -4,8 +4,11 @@ class Content{
 	
 	public $mustache;
 	
+	public $settings;
+	
 	public function __construct(){
 		$this->mustache = new Mustache;
+		$this->settings = Settings::getSettings();
 	}
 
 	public function show( $_slug ){
@@ -14,8 +17,7 @@ class Content{
 		}
 		$slug = Slug::where_slug( $_slug )->first();
 		if( $slug == NULL ){
-			$settings = Settings::getSettings();
-			if( $_slug == $settings['slugallposts'] ){
+			if( $_slug == $this->settings['slugallposts'] ){
 				return $this->showAllPosts();
 			}
 			if( $_slug == Slug::$slugFeed ){
@@ -41,7 +43,7 @@ class Content{
 			$data[ 'posts' ][] = $post->getAttributes();
 		}
 		$data[ 'lastUpdate' ] = Post::getLastUpdate();
-		$data[ 'settings' ] = Settings::getSettings();
+		$data[ 'settings' ] = $this->settings;
 		$data[ 'urlhome' ] = URL::to( '/' );
 		$layout = View::make( 'default/rss' )->with( 'data', $data );
 		return $xml . $layout;
@@ -61,9 +63,8 @@ class Content{
 		foreach( $posts->results as $post ){
 			$data[ 'posts' ][] = $post->getAttributes();
 		}
-		$settings = Settings::getSettings();
 		$data[ 'pagination' ] = $posts->links();
-		$data[ 'allposts' ][ 'url' ] = URL::to( $settings[ 'slugallposts' ] );
+		$data[ 'allposts' ][ 'url' ] = URL::to( $this->settings[ 'slugallposts' ] );
 		$content = $this->mustache->render( Template::getTemplatePosts() , $data );
 		$data = array('title' => $data[ 'category' ][ 'name' ] , 'content' => $content );
 		return $this->renderContent( $data );
@@ -88,6 +89,9 @@ class Content{
 		if( $slug->post == NULL )
 			return $this->error404();
 		$data = $slug->post->getAttributes();
+		if( $this->settings[ 'usemarkdown' ] ){
+			$data['content'] = Markdown::parse( $data['content'] );
+		}
 		$content = $this->mustache->render( Template::getTemplatePost() , $data );
 		$data = array( 'subtitle' => $slug->post->name, 'content' => $content );
 		return $this->renderContent( $data );
@@ -101,9 +105,9 @@ class Content{
 	}
 	
 	private function renderContent( $data ){
-		$data = array_merge( $data, Settings::getSettings() );
+		$data = array_merge( $data, $this->settings );
 		$data[ 'linkcss' ] = '<style>' . Template::getTemplateCSS() . '</style>';
-		$data[ 'urlallposts' ] = $data[ 'settings' ][ 'slugallposts' ];
+		$data[ 'urlallposts' ] = $data[ 'slugallposts' ];
 		$pages = Post::getAllPublishedPage(); 
 		foreach( $pages as $page ){
 			$data[ 'pages' ][] = $page->getAttributes();

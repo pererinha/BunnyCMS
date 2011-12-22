@@ -82,15 +82,15 @@ function addCategoryListener(){
 	});
 
 }
-
+<?php if( !$usemarkdown ) { ?>
 $(function() {
 	var EditorOptions = {
 		uploadURI : '<?php echo URL::to("/admin/upload");?>',
 		iconsPath : '<?php echo URL::to_asset("js/admin//nicEditorIcons.gif") ?>',  
 		maxHeight : 400,
 	}
-	
 	addCategoryListener();
 	bkLib.onDomLoaded(function() { new nicEditor(EditorOptions).panelInstance( 'content' ); });
 });
+<?php } ?>
 </script>

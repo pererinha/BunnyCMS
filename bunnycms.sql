@@ -123,6 +123,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `dateformat` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `slugallposts` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `usemarkdown` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
