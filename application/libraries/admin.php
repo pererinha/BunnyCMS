@@ -14,8 +14,9 @@ class Admin{
 		}
 		$settings = Settings::getSettings();
 		
+		Asset::add('jquery', 'js/admin/jquery1.5.js');
+		
 		if( !$settings[ 'usemarkdown' ] ){
-			Asset::add('jquery', 'js/admin/jquery1.5.js');
 			Asset::add('nicEdit', 'js/admin/nicEdit.js');
 		}
 		

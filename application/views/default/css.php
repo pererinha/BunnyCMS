@@ -1,116 +1,119 @@
-html * {margin:0;padding:0;}
+* { margin:0;padding:0; list-style:none; vertical-align:baseline;}
 body{
-	color:#666;
-	background:#F5F5F5;
-	font-family:Georgia, Helvetica, Arial, sans-serif;
+	background:#FFF;
+	font-family:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Arial,Helvetica,sans-serif;
 }
-a{
-	color:#256FCF;
-	text-decoration:none;
+/* GENERAL */
+header, footer, nav, article, section{
+	margin:10px auto;
+	width:768px;
 }
-	a:hover{
-		background:#256FCF;
-		color:#FFF;
-		text-shadow:none;
-	}
-h1, h2, h3{font-family: 'Convergence', sans-serif;}
-section, header, footer, nav{
-	width:800px;
-	margin:0 auto;
-}
-
-header{
-	margin:20px auto;
-}
+/* HEADER */
+header{}
 	header h1{
-		color:#666;
-		font-size:50px;
-		line-height:75px;
-		text-shadow: 0px 2px 3px #F5F5F5;
+		color:#F58320;
+		text-shadow: #CCC 1px 1px 1px;
 	}
 	header p{
-
+		color:#CCC;
+		font-size:16px;
 	}
+/* NAV */
 nav{
-	border:1px solid #CCC;
-	border-left:none;
-	border-right:none;
-	padding:5px 0;
+	margin-bottom:20px;
+	margin-top:20px;
 }
-	nav ul{
-		list-style:none;
-	}
-		nav ul li{
-			float:left;
-		}
-			nav ul li a{
-				margin:5px;
-			}
-
-section{}
-	section h2{
-		font-size:35px;
-		margin:30px 0 10px 0;
-		text-shadow: 0px 2px 3px #F5F5F5;
-	}
-.overview *{
-	font-size:12px;
-}
-	.overview p{
-		color:#999;
+	nav ul li{
 		float:left;
-		margin:0 0 10px 0;
+		margin:0 10px 0 0;
 	}
-	.overview ul{
-		list-style:none;
-	}
-		.overview ul li{
-			float: left;
-			padding:0 5px 0 5px;
+		nav ul li a{
+			color:#666;
+			font-size:14px;
+			text-decoration:none;
 		}
-article.contents{}
-	article.contents h3{
-		border-bottom:1px solid #CCC;
-		color:#999;
-		font-size:28px;
-		margin:40px 0 20px 0;
-		text-shadow: 0px 2px 3px #F5F5F5;
+
+/* ARTICLE */
+article{}
+	article.overview h1 a{
+		color:#333;
+		font-size:22px;
+		text-decoration:none;
+		text-shadow: #CCC 1px 1px 1px;
 	}
-	article.contents p{
-		line-height:26px;
+	article.overview p.datetime{
+		font-size:11px;
 	}
-		article.contents p{
-			margin:0 0 15px 0;
+	article.overview ul.categories{
+		font-size:12px;
+		margin:10px 0;
+	}
+		article.overview ul.categories li{
+			float:left;
+			margin:0 10px 0 0;
 		}
-	article.contents ul, article.contents ol{
-		line-height:26px;
-		margin:15px 0 15px 25px;
+			article.overview ul.categories li a{
+				color:#F58320;
+				text-decoration:none;
+			}
+	article.contents{
+		color:#333;
 	}
-#twitter{
-	width:100px;
-	float:right;
-}
-#facebook-like{
-	margin:30px 0 0 0;
-}
-#pagination{
-	margin:40px 0 0 0;
-	text-align:center;
-}
-ul#posts{
-	list-style:none;
-}
-	ul#posts li h3{
-		font-size:23px;
-		margin:20px 0 10px 0;
+		article.contents h1, 
+		article.contents h2, 
+		article.contents h3, 
+		article.contents h4, 
+		article.contents h5, 
+		article.contents h6,
+		article.contents ul,
+		article.contents p,
+		article.contents pre{
+			margin:25px 0 5px 0;
+		}
+			article.contents a{
+				color:#F58320;
+			}
+		article.contents pre{
+			color:#FFF;
+			background:#333;
+			padding:10px;
+		}
+			article.contents pre code{
+				color:#FFF;
+			}
+	article.contents div#share{
+		float:right;
+		margin-top:15px;
+		width:90px;
+	}
+		article.contents div#share div#twitter{
+			margin:5px 0;
+		}
+	article.contents div#comments{
+		margin:50px auto 80px auto;
+		width:500px;
+	}
+		article.contents div#comments h2{
+			color:#CCC;
+			font-style:italic;
+		}
+section#posts{}
+	section#posts h1 a{
+		color:#333;
+		font-size:22px;
+		text-decoration:none;
+		text-shadow: #CCC 1px 1px 1px;
+	}
+	section#posts h1#title, section#posts h1#title a{
+		color:#F58320 !important;
+		font-size:15px;
 	}
 footer{
-	border-top:1px solid #CCC;
-	color:#999;
-	font-size:14px;
-	margin-bottom:30px;
-	margin-top:60px;
-	padding:15px 0 0 0;
+	margin:40px auto;
+}
+footer a{
+	color:#F58320 !important;
+	text-decoration:none;
 }
 /* @override http://localhost/mark_story2/site/css/geshi.css */
 /**
@@ -131,11 +134,6 @@ footer{
 /*
 * Global geshi styles
 **********************/
-article.contents pre {
-	padding: 5px;
-	background: #FFF;
-	margin:10px;
-}
 article.contents pre ol {
 	list-style: decimal;
 	list-style-position: outside;
@@ -149,7 +147,7 @@ article.contents pre ol li {
 	clear: none;
 }
 pre ol li div {
-	color:#000;
+	color:#fff;
 }
 
 /* Line highlights */
@@ -165,31 +163,31 @@ pre ol li div {
 }
 /* methods */
 .me1{
-	color:#000;
+	color:#CCC;
 }
 .me0 {	
 
 }
 .me2 {	
-	color:#000;
+	color:#CCC;
 }
 
 /* brackets */
 .br0 {
-	color:#000;
+	color:#D9EB7F;
 }
 
 /* strings */
 .st0 {
-	color:#0B6125;
+	color:#EBC57F;
 }
 
 /* keywords */
 .kw1 {
-	color: #794938;
+	color: #D57FEB;
 }
 .kw2 {
-	color:#A71D5D;
+	color:#EB7F9A;
 	font-style: italic;		
 }
 
@@ -199,12 +197,12 @@ pre ol li div {
 
 /* numbers */
 .nu0 {
-	color:#811F24;
+	color:#7FEB7F;
 }
 
 /* vars */
 .re0 {
-	color:#434A97;
+	color:#7FEBE9;
 }
 
 
@@ -239,7 +237,7 @@ pre ol li div {
 ****************/
 [lang=python] ol li div,
 .python ol li div {
-	color: #000;
+	color: #CCC;
 }
 [lang=python] .kw2,
 .python .kw2 {
@@ -255,6 +253,4 @@ pre ol li div {
 .javascript .me1 {
 	color: #794938;
 }
-
-
 .clear{clear:both;}

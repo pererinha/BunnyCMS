@@ -30,6 +30,8 @@ class Template extends Eloquent {
 	}
 	
 	public static function getTemplate( $id ){
+		// While you are developping a template it is helpful to uncomment this line above
+		// return View::make( '/default/' . $id );
 		$template = Template::where_id( $id )->first();
 		return stripslashes( $template->content );
 	}

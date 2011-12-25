@@ -1,31 +1,34 @@
-{{#allposts}}
-	<h2><a href="{{allposts.url}}">All posts</a></h2>
-{{/allposts}}
-{{#category}}
-	<h2>Posts under category <a href="{{category.url}}">{{category.name}}</a></h2>
-{{/category}}
-<ul id='posts'>
-{{#posts}}
-    <li>
-		<h3><a href="{{url}}">{{name}}</a></h3>
-		<article class='overview'>
-			<p class='details'>
-				Posted on
-				<time datetime="{{dateformated}}" title="{{dateformated}}">
-					{{timeago}}
-				</time>
-				under 
+<section id="posts">
+	<h1 id="title">
+	{{#allposts}}
+		<a href="{{allposts.url}}">All posts</a>
+	{{/allposts}}
+	{{#category}}
+		Posts under category <a href="{{category.url}}">{{category.name}}</a>
+	{{/category}}
+	</h1>
+	<ul id='posts'>
+	{{#posts}}
+	    <li>
+			<article class='overview'>
+				<h1><a href="{{url}}">{{name}}</a></h1>
+				<p class="datetime">
+					Posted on
+					<time datetime="{{dateformated}}" title="{{dateformated}}">
+						{{timeago}}
+					</time> 
+				</p>
 				<ul class="categories">
-					{{#categories}}
-			    		<li><strong><a href="{{url}}">{{name}}</a></strong></li>
-					{{/categories}}
+				{{#categories}}
+				    <li><a href="{{url}}">{{name}}</a></li>
+				{{/categories}}
 				</ul>
-			</p>
+			</article>
 			<div class="clear"></div>
-		</article>
-	</li>
-{{/posts}}
-</ul>
-<div id="pagination">
-{{pagination}}
-</div>
+		</li>
+	{{/posts}}
+	</ul>
+	<div id="pagination">
+	{{pagination}}
+	</div>
+</section>
