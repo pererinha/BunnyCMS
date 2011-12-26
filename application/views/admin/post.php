@@ -6,6 +6,15 @@
     <label for="name"><?php echo Lang::line( 'admin.post-name' ); ?></label>
     <div class="input">
       <input type="text" size="50" name="name" id="name" value="<?php echo stripcslashes( $post->name ); ?>" class="xlarge">
+		<?php if ( $post->id > 0 ) {?>
+			<a target="_blank" href="<?php echo URL::to( $post->slug->slug ) ; ?>">
+			<?php if( $post->status === Post::$statusDraft ) { ?>
+				<span class="label"><?php echo Lang::line( 'admin.post-status-draft' ); ?></span>
+			<?php } else { ?>
+				<span class="label success"><?php echo Lang::line( 'admin.post-status-public' ); ?></span>
+			<?php } ?>
+		<?php } ?>
+		</a>
     </div>
   </div><!-- /clearfix -->
   <div class="clearfix">
