@@ -40,7 +40,11 @@ class Content{
 		$posts = Post::getAllPublishedPostsToFeed();
 		$data = array();
 		foreach( $posts as $post ){
-			$data[ 'posts' ][] = $post->getAttributes();
+			$attr = $post->getAttributes();
+			if( $this->settings[ 'usemarkdown' ] ){
+				$attr['content'] = Markdown::parse( $attr['content'] );
+			}
+			$data[ 'posts' ][] = $attr;
 		}
 		$data[ 'lastUpdate' ] = Post::getLastUpdate();
 		$data[ 'settings' ] = $this->settings;
