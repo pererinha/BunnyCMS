@@ -104,5 +104,15 @@ $(function() {
 	addCategoryListener();
 	bkLib.onDomLoaded(function() { new nicEditor(EditorOptions).panelInstance( 'content' ); });
 });
+<?php } else { ?>
+$(document).ready(function(){
+	$('#content').markdownEditor( 
+		{	textarea : {
+				height : 400,
+				width : 550,
+			},
+			languages : [ 'css', 'javascript', 'php', 'python', 'ruby' ]
+		} );	
+});
 <?php } ?>
 </script>

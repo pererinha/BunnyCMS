@@ -14,10 +14,12 @@ class Admin{
 		}
 		$settings = Settings::getSettings();
 		
-		Asset::add('jquery', 'js/admin/jquery1.5.js');
+		Asset::add( 'jquery', 'js/admin/jquery1.5.js' );
 		
 		if( !$settings[ 'usemarkdown' ] ){
-			Asset::add('nicEdit', 'js/admin/nicEdit.js');
+			Asset::add( 'nicEdit', 'js/admin/nicEdit.js' );
+		} else {
+			Asset::add( 'jquery.MarkdownEditor','js/admin/jquery.MarkdownEditor.js' );
 		}
 		
 		$content = View::make( 'admin/post' )->with( 'post', $post )->with( 'usemarkdown', $settings[ 'usemarkdown' ] );
