@@ -28,11 +28,7 @@
 		{{content}}
 	</section>
 	<footer>
-		<pre>
-			 (\/)
-			( . .)
-			c(")(") <a href="https://github.com/pererinha/BunnyCMS" target="_blank">BunnyCMS</a> | <a href="{{urlfeed}}" target="_blank">Feed</a> 
-		</pre>
+		<a href="https://github.com/pererinha/BunnyCMS" target="_blank">BunnyCMS</a> | <a href="{{urlfeed}}" target="_blank">Feed</a> 					
 	</footer>
 </body>
 </html>

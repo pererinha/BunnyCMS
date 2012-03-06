@@ -91,7 +91,7 @@ article{}
 		}
 	article.contents div#comments{
 		margin:50px auto 80px auto;
-		width:500px;
+		width:700px;
 	}
 		article.contents div#comments h2{
 			color:#CCC;
@@ -115,6 +115,14 @@ footer a{
 	color:#F58320 !important;
 	text-decoration:none;
 }
+
+#pagination{
+margin:50px;
+}
+#pagination a{
+color:#F58320 !important;
+}
+
 /* @override http://localhost/mark_story2/site/css/geshi.css */
 /**
  * GeSHi CSS Inspired by 

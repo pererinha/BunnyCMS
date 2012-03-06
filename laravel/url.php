@@ -19,6 +19,10 @@ class URL {
 	 * @param  bool    $https
 	 * @return string
 	 */
+	public static function current(){
+		return URI::current();
+	}
+	
 	public static function to($url = '', $https = false)
 	{
 		if (filter_var($url, FILTER_VALIDATE_URL) !== false) return $url;

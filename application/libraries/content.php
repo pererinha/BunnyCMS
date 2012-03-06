@@ -116,6 +116,7 @@ class Content{
 		foreach( $pages as $page ){
 			$data[ 'pages' ][] = $page->getAttributes();
 		}
+		$data[ 'currentURL' ] = URL::to( URL::current() );
 		return $this->mustache->render( Template::getTemplateBase() , $data );
 	}
 }
